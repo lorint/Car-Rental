@@ -1,0 +1,6 @@
+<% @roles.each do |role| %>
+	<a href="/roles/<%= role.id %>/edit"><%= role.name %></a> (<%= role.users.count %> total)<br>
+<% end %>
+<br>
+<br>
+<a href="/users">See the users</a>

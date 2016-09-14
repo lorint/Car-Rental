@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+	<a href="/users/<%= user.id %>/edit"><%= user.name %></a><br>
+<% end %>
+<br>
+<br>
+<a href="/roles">See the roles</a>

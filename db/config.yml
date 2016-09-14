@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: car_rental_development
+test:
+  adapter: postgresql
+  database: car_rental_test

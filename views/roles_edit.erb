@@ -1,0 +1,9 @@
+<form action="/roles/<%= @role.id %>" method="post">
+  <% @users.each do |user| %>
+    <input type="checkbox" name="[role]user_ids[]" value="<%= user.id %>"
+      <%= "checked" if user.is_a(@role.name) %>>
+    <%= user.name %><br>
+  <% end %>
+  <input type="hidden" name="[role]user_ids[]" value="-1">
+  <input type="submit" value="Save <%= @role.name %>">
+</form>
