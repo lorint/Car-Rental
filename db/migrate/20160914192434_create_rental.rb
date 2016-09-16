@@ -6,6 +6,7 @@ class CreateRental < ActiveRecord::Migration
       t.references :customer, index: true  # , foreign_key: true
       t.references :clerk, index: true  # , foreign_key: true
       t.references :collector, index: true  # , foreign_key: true
+      t.references :vehicle, index: true, foreign_key: true
     end
   end
 end

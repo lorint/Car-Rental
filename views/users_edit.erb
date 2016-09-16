@@ -1,3 +1,4 @@
+<h2><%= @user.name %></h2>
 <form action="/users/<%= @user.id %>" method="post">
   <% @roles.each do |role| %>
     <input type="checkbox" name="[user]role_ids[]" value="<%= role.id %>"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914192434) do
+ActiveRecord::Schema.define(version: 20160916062727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,18 @@ ActiveRecord::Schema.define(version: 20160914192434) do
     t.integer  "customer_id"
     t.integer  "clerk_id"
     t.integer  "collector_id"
+    t.integer  "vehicle_id"
+    t.datetime "actual_drop_off_time"
+    t.integer  "odometer"
+    t.integer  "fuel_level"
+    t.integer  "primary_driver_id"
   end
 
   add_index "rentals", ["clerk_id"], name: "index_rentals_on_clerk_id", using: :btree
   add_index "rentals", ["collector_id"], name: "index_rentals_on_collector_id", using: :btree
   add_index "rentals", ["customer_id"], name: "index_rentals_on_customer_id", using: :btree
+  add_index "rentals", ["primary_driver_id"], name: "index_rentals_on_primary_driver_id", using: :btree
+  add_index "rentals", ["vehicle_id"], name: "index_rentals_on_vehicle_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -47,6 +54,13 @@ ActiveRecord::Schema.define(version: 20160914192434) do
     t.string "password_digest"
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.integer "year"
+    t.string  "make"
+    t.string  "model"
+  end
+
+  add_foreign_key "rentals", "vehicles"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

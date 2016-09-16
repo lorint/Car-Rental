@@ -1,3 +1,4 @@
+<h2><%= @role.name %></h2>
 <form action="/roles/<%= @role.id %>" method="post">
   <% @users.each do |user| %>
     <input type="checkbox" name="[role]user_ids[]" value="<%= user.id %>"
@@ -5,5 +6,7 @@
     <%= user.name %><br>
   <% end %>
   <input type="hidden" name="[role]user_ids[]" value="-1">
+  <%#= submit_tag %>
   <input type="submit" value="Save <%= @role.name %>">
 </form>
+
